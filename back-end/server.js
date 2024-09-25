@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const listingRouter = require("./routes/listingRoutes");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -18,11 +19,9 @@ mongoose
 
 // Routes
 
-app.get("/", (req, res) => {
-  res.send("alloo");
-});
+app.use("/api/listings", listingRouter);
 
-// Start server
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
